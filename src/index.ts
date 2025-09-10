@@ -5,7 +5,11 @@ import { GiphyFetch } from "@giphy/js-fetch-api";
 
 const app = new Hono();
 
-app.use("*", cors());
+app.use('*', cors({
+  origin: '*', 
+  allowMethods: ['GET', 'POST', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization']
+}))
 
 const ai = new GoogleGenAI({
 	apiKey: process.env.GEMINI_API_KEY,
