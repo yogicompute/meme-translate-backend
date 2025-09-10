@@ -14,7 +14,8 @@ const ai = new GoogleGenAI({
 const gf = new GiphyFetch(process.env.GIPHY_API_KEY!);
 
 app.get("/", (c) => {
-	return c.text("Hello Hono!");
+	const dummy = process.env.DUMMY || "";
+	return c.text("Hello Hono!" + dummy);
 });
 
 app.post("/api/translate", async (c) => {
